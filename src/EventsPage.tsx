@@ -9,10 +9,6 @@ interface EventsPageProps {
 
 export default function EventsPage({ category }: EventsPageProps) {
   const filteredEvents = events.filter((event) => event.type === category);
-  const pageTitle =
-    category === "party" ? "Nightlife & Clubbing" : "Pop-ups & Markets";
-  const pageSubtitle = category === "party" ? "UPCOMING PARTIES" : "NEXT DROPS";
-
   return (
     <div
       className="relative min-h-screen bg-black bg-cover bg-center p-4 text-white md:p-8"

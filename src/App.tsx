@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, Mic2, Music, ShoppingBag, X } from "lucide-react";
+import { Menu, Mic2, X } from "lucide-react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import EventsPage from "./EventsPage";
 import AgencyPage from "./AgencyPage";
