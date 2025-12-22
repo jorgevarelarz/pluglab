@@ -55,6 +55,7 @@ export default function EventsPage({ category }: EventsPageProps) {
               <img
                 src={event.image}
                 alt={event.title}
+                loading="lazy"
                 className="h-full w-full object-cover grayscale transition-transform duration-700 group-hover:scale-110 group-hover:grayscale-0"
               />
 

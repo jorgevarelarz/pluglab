@@ -56,6 +56,7 @@ export default function AgencyPage() {
               <img
                 src={artist.image}
                 alt={artist.name}
+                loading="lazy"
                 className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
               />
 

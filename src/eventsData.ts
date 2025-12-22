@@ -7,7 +7,7 @@ export const events = [
     type: "party",
     date: "4/07 17:00H",
     location: "Pantalan Rest Club · A Coruña",
-    image: "/party-plug-fest.png",
+    image: "/party-plug-fest.jpg",
     status: "ON SALE",
   },
   {
@@ -16,7 +16,7 @@ export const events = [
     type: "popup",
     date: "NOV 15",
     location: "A Coruña · Pantalan Rest Club · 16:00 - 22:00",
-    image: "/popup-plug-market.png",
+    image: "/popup-plug-market.jpg",
     status: "RSVP OPEN",
   },
 ];
