@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, Mic2, X } from "lucide-react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -7,6 +7,27 @@ import AgencyPage from "./AgencyPage";
 
 function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const attemptPlay = () => {
+      video.muted = true;
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {});
+      }
+    };
+
+    attemptPlay();
+    video.addEventListener("canplay", attemptPlay);
+
+    return () => {
+      video.removeEventListener("canplay", attemptPlay);
+    };
+  }, []);
 
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-neon selection:text-black">
@@ -14,6 +35,7 @@ function Home() {
         <div className="absolute inset-0 z-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
 
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
@@ -21,6 +43,7 @@ function Home() {
           disablePictureInPicture
           controls={false}
           preload="auto"
+          poster="/logo-3d-poster.jpg"
           className="h-full w-full object-cover grayscale contrast-125"
         >
           <source src="/logo-3d.mp4" type="video/mp4" />
