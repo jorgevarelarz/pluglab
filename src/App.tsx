@@ -18,6 +18,8 @@ function Home() {
           loop
           muted
           playsInline
+          disablePictureInPicture
+          controls={false}
           className="h-full w-full object-cover grayscale contrast-125"
         >
           <source src="/logo-3d.mp4" type="video/mp4" />
@@ -58,19 +60,19 @@ function Home() {
           <div className="flex flex-col gap-4">
             <Link
               to="/popups"
-              className="flex items-center gap-3"
+              className="flex items-center"
               onClick={() => setMenuOpen(false)}
             >
               <img src="/pop-ads.png" alt="Pop Ads" className="h-6 w-auto" />
-              Pop Ads
+              <span className="sr-only">Pop Ads</span>
             </Link>
             <Link
               to="/parties"
-              className="flex items-center gap-3"
+              className="flex items-center"
               onClick={() => setMenuOpen(false)}
             >
               <img src="/parties.png" alt="Parties" className="h-6 w-auto" />
-              Parties
+              <span className="sr-only">Parties</span>
             </Link>
             <Link to="/agency" onClick={() => setMenuOpen(false)}>
               Agency
