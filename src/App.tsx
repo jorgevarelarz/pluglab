@@ -43,6 +43,7 @@ function Home() {
           disablePictureInPicture
           controls={false}
           preload="auto"
+          poster="/logo-3d-poster.jpg"
           className="h-full w-full object-cover grayscale contrast-125"
         >
           <source src="/logo-3d.mp4" type="video/mp4" />

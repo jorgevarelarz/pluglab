@@ -40,7 +40,7 @@ export default function EventsPage({ category }: EventsPageProps) {
             preload="auto"
             className="h-full w-full object-cover"
           >
-            <source src="/logo-3d.mp4" type="video/mp4" />
+            <source src="/popup-bg.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/70" />
         </div>
