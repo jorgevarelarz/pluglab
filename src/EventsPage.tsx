@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { ArrowLeft, ShoppingBag, Ticket } from "lucide-react";
 import { Link } from "react-router-dom";
 import { events } from "./eventsData";
@@ -9,12 +10,48 @@ interface EventsPageProps {
 
 export default function EventsPage({ category }: EventsPageProps) {
   const filteredEvents = events.filter((event) => event.type === category);
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (category !== "popup") return;
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.loop = false;
+    video.currentTime = 0;
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {});
+    }
+  }, [category]);
   return (
-    <div
-      className="relative min-h-screen bg-black bg-cover bg-center p-4 text-white md:p-8"
-      style={{ backgroundImage: "url('/events-bg.jpg')" }}
-    >
-      <div className="absolute inset-0 bg-black/70" />
+    <div className="relative min-h-screen bg-black p-4 text-white md:p-8">
+      {category === "popup" ? (
+        <div className="absolute inset-0 z-0">
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            playsInline
+            disablePictureInPicture
+            controls={false}
+            preload="auto"
+            className="h-full w-full object-cover"
+          >
+            <source src="/logo-3d.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+      ) : (
+        <div
+          className="absolute inset-0 z-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/events-bg.jpg')" }}
+        >
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+      )}
       <div className="relative z-10">
       <nav className="sticky top-0 z-50 mb-12 flex items-center justify-between mix-blend-difference">
         <Link
